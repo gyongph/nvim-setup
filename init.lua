@@ -17,15 +17,6 @@ vim.cmd([[
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 
--- Function to get the current file's directory (or './' for new files)
-local function current_file_dir()
-  local dir = vim.fn.expand("%:h")
-  if dir == "" then
-    dir = "."
-  end
-  return dir .. "/"
-end
-
 -- Command-line abbreviation: '%%' becomes current file's directory on ':'
 vim.cmd([[
   cnoreabbrev <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
@@ -40,3 +31,4 @@ vim.keymap.set("n", "<leader>et", ":tabe %%", { noremap = true })
 -- Mapping to open netrw Explore
 vim.keymap.set("n", "<leader>ed", ":Explore<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_hl(0, "LspInlayHint", { bg = "NONE", fg = "#888888", italic = true })
+vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "NONE", fg = "#41c6f5", italic = true })
